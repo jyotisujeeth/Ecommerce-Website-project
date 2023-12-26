@@ -1,51 +1,62 @@
-import {
-  createBrowserRouter,
-  // createRoutesFromElements,
-  // Route,
-  RouterProvider,
-} from "react-router-dom";
-import HomePage from "./components/HomePage";
-import CartProvider from "./components/Context/cartProvider";
-import StorePage from "./components/Store";
-import RootLayout from "./components/RootLayout";
-import ErrorPage from "./components/ErrorPage";
-import AboutUs from "./components/AboutUs";
-
-/* const routeDefinitions = createRoutesFromElements(
-  <Route>
-    <Route path="/" element={<HomePage />} />
-    <Route path="/store" element={<StorePage />} />
-  </Route>
+import "./App.css";
+import { Spinner } from "react-bootstrap";
+import React, { Suspense, lazy } from "react";
+import { Switch } from "react-router-dom";
+import PrivateRoutes from "./Routes/PrivateRoutes";
+import NavBar from "./Components/NavBar";
+import PublicRoutes from "./Routes/PublicRoutes";
+// import About from "./Pages/AboutPage/About";
+// import ErrorPage from "./Pages/ErrorPage";
+// import Footer from "./Components/Footer";
+// import HomePage from "./Pages/HomePage/HomePage";
+// import ContactPage from "./Pages/ContactPage/ContactPage";
+// import Login from "./Pages/LoginPage/Login";
+// import ProductDetailsPage from "./Pages/StorePage/ProductDetail/ProductDetailsPage";
+const StorePage = lazy(() => import("./Pages/StorePage/StorePage"));
+const About = lazy(() => import("./Pages/AboutPage/About"));
+const ErrorPage = lazy(() => import("./Pages/ErrorPage"));
+const Footer = lazy(() => import("./Components/Footer"));
+const HomePage = lazy(() => import("./Pages/HomePage/HomePage"));
+const ContactPage = lazy(() => import("./Pages/ContactPage/ContactPage"));
+const Login = lazy(() => import("./Pages/LoginPage/Login"));
+const ProductDetailsPage = lazy(() =>
+  import("./Pages/StorePage/ProductDetail/ProductDetailsPage")
 );
-const router = createBrowserRouter(routeDefinitions);
-*/
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <RootLayout />,
-    errorElement: <ErrorPage />,
-    children: [
-      { path: "/home", element: <HomePage /> },
-      { path: "/store", element: <StorePage /> },
-      { path: "/aboutUs", element: <AboutUs /> },
-    ],
-  },
-]);
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import MainNavigationRoutes from "./components/MainNavigationRoutes";
-import NavBar from "./components/Navbar";
+// const NavBar = lazy(() => import("./Components/NavBar"));
 
-function App() {
+const App = () => {
   return (
-    <CartProvider>
-      <RouterProvider router={router} />
-      <div style={{ paddingBottom: "50px" }}>
-        <NavBar />
-        <Header />
-        <MainNavigationRoutes />
-      </div>
-      <Footer />
-    </CartProvider>
+    <div className="App">
+      <NavBar />
+      <Suspense
+        fallback={
+          <div>
+            <p className="text-center display-3">Loading...</p>
+            {/* <Spinner
+              style={{ textAlign: "center" }}
+              animation="border"
+              variant="dark"
+              size="lg"
+            /> */}
+          </div>
+        }
+      >
+        <Switch>
+          <PrivateRoutes exact Component={HomePage} path="/" />
+          <PrivateRoutes Component={StorePage} path="/store" exact />
+          <PrivateRoutes Component={About} path="/about" />
+          <PrivateRoutes Component={ContactPage} path="/contact" exact />
+          <PrivateRoutes
+            Component={ProductDetailsPage}
+            path="/productDetails"
+          />
+          <PublicRoutes path="/login" Component={Login} exact />
+          <PrivateRoutes Component={ErrorPage} path="*" />
+        </Switch>
+        <Footer />
+      </Suspense>
+    </div>
   );
-}
+};
+
+export default App;
