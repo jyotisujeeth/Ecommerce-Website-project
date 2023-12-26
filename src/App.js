@@ -13,7 +13,7 @@ import PublicRoutes from "./Routes/PublicRoutes";
 // import Login from "./Pages/LoginPage/Login";
 // import ProductDetailsPage from "./Pages/StorePage/ProductDetail/ProductDetailsPage";
 const StorePage = lazy(() => import("./Pages/StorePage/StorePage"));
-const About = lazy(() => import("./Pages/AboutPage/About"));
+const About = lazy(() => import("./pages/AboutPage.js/About"));
 const ErrorPage = lazy(() => import("./Pages/ErrorPage"));
 const Footer = lazy(() => import("./Components/Footer"));
 const HomePage = lazy(() => import("./Pages/HomePage/HomePage"));
