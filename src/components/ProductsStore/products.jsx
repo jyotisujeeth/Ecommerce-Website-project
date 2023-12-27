@@ -1,5 +1,6 @@
 const productsArr = [
   {
+    id: "m1",
     title: "Colors",
 
     price: 100,
@@ -8,6 +9,7 @@ const productsArr = [
   },
 
   {
+    id: "m2",
     title: "Black and white Colors",
 
     price: 50,
@@ -16,6 +18,7 @@ const productsArr = [
   },
 
   {
+    id: "m3",
     title: "Yellow and Black Colors",
 
     price: 70,
@@ -24,6 +27,7 @@ const productsArr = [
   },
 
   {
+    id: "m4",
     title: "Blue Color",
 
     price: 100,
@@ -31,6 +35,7 @@ const productsArr = [
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
   },
   {
+    id: "m5",
     title: "Blue Color",
 
     price: 100,
@@ -38,6 +43,7 @@ const productsArr = [
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
   },
   {
+    id: "m6",
     title: "Colors",
 
     price: 100,
@@ -46,6 +52,7 @@ const productsArr = [
   },
 
   {
+    id: "m7",
     title: "Black and white Colors",
 
     price: 50,
@@ -54,6 +61,7 @@ const productsArr = [
   },
 
   {
+    id: "m8",
     title: "Yellow and Black Colors",
 
     price: 70,
@@ -62,11 +70,12 @@ const productsArr = [
   },
 
   {
+    id: "m9",
     title: "Blue Color",
 
     price: 100,
 
-     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
   },
 ];
 

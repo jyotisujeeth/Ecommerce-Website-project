@@ -1,0 +1,48 @@
+/* Reset the default list styles for the ul */
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  /* Style the footer */
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: #000000;
+    color: aliceblue;
+    /* Fix the footer to the bottom */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Style the footer links with a bit of gap between them */
+  footer ul {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* Style the icon images within the footer links */
+  footer ul li img {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    /* Adding some spacing around the icons */
+    padding: 5px;
+    border-radius: 50%; /* Make the icons circular */
+    /* Add a hover effect to the icons */
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Apply hover effect on the icons */
+  footer ul li img:hover {
+    background-color: #333; /* Darken the background on hover */
+  }
+  h4{
+    margin-right:10px;
+    margin-top: 10px;
+  }
+  

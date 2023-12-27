@@ -1,28 +1,72 @@
-import { Nav, Container, Navbar } from "react-bootstrap";
-import Cart from "./Cart/cartItems";
+import { Nav, Container, Navbar, Button } from "react-bootstrap";
+import { NavLink, useNavigate } from "react-router-dom";
+import Cart from "../Cart/cartItems";
+import { useContext } from "react";
+import CartContext from "../Context/cartContext";
+
 const NavBar = () => {
+  const authCtx = useContext(CartContext);
+  const navigate = useNavigate();
+  const isLoggedIn = authCtx.isLoggedIn;
+  console.log(isLoggedIn);
+  const logoutHandler = () => {
+    authCtx.logout();
+    navigate("/auth");
+  };
   return (
     <>
       <Navbar bg="warning" variant="light" expand="lg">
-        <Container className="justify-content-center display-flex">
+        <Container>
           <Nav>
             <Nav.Item>
-              <Nav.Link href="/home">
-                <b>Home</b>
-              </Nav.Link>
+              {isLoggedIn && (
+                <NavLink to="/home" style={{ marginRight: "50px" }}>
+                  <b>Home</b>
+                </NavLink>
+              )}
             </Nav.Item>
+            {isLoggedIn && (
+              <Nav.Item>
+                <NavLink to="/store" style={{ marginRight: "50px" }}>
+                  <b>Store</b>
+                </NavLink>
+              </Nav.Item>
+            )}
+            {isLoggedIn && (
+              <Nav.Item>
+                <NavLink to="/orders" style={{ marginRight: "50px" }}>
+                  <b>My Orders</b>
+                </NavLink>
+              </Nav.Item>
+            )}
             <Nav.Item>
-              <Nav.Link href="/store">
-                <b>Store</b>
-              </Nav.Link>
+              <NavLink to="/about" style={{ marginRight: "50px" }}>
+                <b>About Us</b>
+              </NavLink>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/about">
-                <b>About</b>
-              </Nav.Link>
-            </Nav.Item>
+            {isLoggedIn && (
+              <Nav.Item>
+                <NavLink to="/contact" style={{ marginRight: "50px" }}>
+                  <b>Contact Us</b>
+                </NavLink>
+              </Nav.Item>
+            )}
+            {!isLoggedIn && (
+              <Nav.Item>
+                <NavLink to="/auth" style={{ marginRight: "50px" }}>
+                  <b>Login</b>
+                </NavLink>
+              </Nav.Item>
+            )}
           </Nav>
-          <Cart />
+          <div className="d-flex justify-content-end">
+            {isLoggedIn && <Cart />}
+            {isLoggedIn && (
+              <Button className="primary ms-3" onClick={logoutHandler}>
+                Logout
+              </Button>
+            )}
+          </div>
         </Container>
       </Navbar>
     </>

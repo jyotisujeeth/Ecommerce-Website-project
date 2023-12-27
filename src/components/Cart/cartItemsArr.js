@@ -1,5 +1,7 @@
 const cartItemsArr = [
   {
+    id: 1,
+
     title: "Colors",
 
     price: 100,
@@ -10,6 +12,7 @@ const cartItemsArr = [
   },
 
   {
+    id: 2,
     title: "Black and white Colors",
 
     price: 50,
@@ -20,6 +23,7 @@ const cartItemsArr = [
   },
 
   {
+    id: 3,
     title: "Yellow and Black Colors",
 
     price: 70,

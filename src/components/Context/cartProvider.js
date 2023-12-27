@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import React, { useState, useEffect, useCallback } from "react";
 import CartContext from "./cartContext";
 
@@ -58,7 +57,9 @@ const CartProvider = (props) => {
   const addItemHandler = (item) => {
     const itemIndex = items.findIndex((cartItem) => cartItem.id === item.id);
     if (itemIndex > -1) {
-@@ -12,6 +63,7 @@ const CartProvider = (props) => {
+      const newCartItems = [...items];
+      newCartItems[itemIndex].quantity = newCartItems[itemIndex].quantity + 1;
+      updateItems(newCartItems);
     } else {
       updateItems([...items, item]);
     }
@@ -66,7 +67,13 @@ const CartProvider = (props) => {
   };
   const removeItemHandler = (id) => {
     const itemIndex = items.findIndex((cartItem) => cartItem.id === id);
-@@ -25,19 +77,25 @@ const CartProvider = (props) => {
+
+    if (itemIndex > -1) {
+      let newCartItems = [...items];
+      if (newCartItems[itemIndex].quantity === 1) {
+        newCartItems.splice(itemIndex, 1);
+        //newCartItems=newCartItems.filter(item=>item.id!==id)
+      } else {
         newCartItems[itemIndex].quantity = newCartItems[itemIndex].quantity - 1;
       }
       updateItems(newCartItems);
@@ -91,4 +98,10 @@ const CartProvider = (props) => {
     logout: logoutHandler,
   };
   return (
-    <CartContext.Provider value={cartContext}></CartContext.Provider>
+    <CartContext.Provider value={cartContext}>
+      {props.children}
+    </CartContext.Provider>
+  );
+};
+
+export default CartProvider;
