@@ -3,7 +3,9 @@ import { Button, Badge, Modal } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { uiActions } from "../../reduxstore/ui-slice";
 import { cartActions } from "../../reduxstore/cart-slice";
-import CartIcon from "./cartIcon";
+import CartIcon from "./CartIcon";
+// C:\Users\jyoti\Desktop\Ecommerce-Website-project\e-comm\src\components\Cart\CartIcon.js
+
 const Cart = () => {
   const cartIsVisible = useSelector((state) => state.ui.cartIsVisible);
   const items = useSelector((state) => state.cart.items);

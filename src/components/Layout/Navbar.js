@@ -1,6 +1,8 @@
 import { Nav, Container, Navbar, Button } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
-import Cart from "../Cart/cartItems";
+import Cart from "../Cart/CartItems";
+// C:\Users\jyoti\Desktop\Ecommerce-Website-project\e-comm\src\components\Cart\CartItems.js
+
 import { useContext } from "react";
 import CartContext from "../Context/cartContext";
 
