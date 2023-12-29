@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import AuthContext from "../Store/AuthContext";
 import classes from "./AuthForm.module.css";
 
-const AuthForm = () => {
+const LoginAuthForm = () => {
   const navigate = useNavigate();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -28,9 +28,6 @@ const AuthForm = () => {
     if (isLogin) {
       url =
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCuwdlNK_HArrq59Wc3Qjsd5yNizUCUGHw";
-    } else {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCuwdlNK_HArrq59Wc3Qjsd5yNizUCUGHw";
     }
     fetch(url, {
       method: "POST",
@@ -103,4 +100,4 @@ const AuthForm = () => {
     </Fragment>
   );
 };
-export default AuthForm;
+export default LoginAuthForm;
