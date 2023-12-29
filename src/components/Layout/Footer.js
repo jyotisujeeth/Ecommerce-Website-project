@@ -13,9 +13,10 @@ const Footer = () => {
                 alt="YouTube"
               />
             </a>
+            
           </li>
           <li>
-            <a href="https://www.youtube.com/">
+            <a href="https://open.spotify.com//">
               <img
                 src="https://prasadyash2411.github.io/ecom-website/img/Spotify%20Logo.png"
                 alt="Spotify"
@@ -23,7 +24,7 @@ const Footer = () => {
             </a>
           </li>
           <li>
-            <a href="https://www.youtube.com/">
+            <a href="https://www.facebook.com/">
               <img
                 src="https://prasadyash2411.github.io/ecom-website/img/Facebook%20Logo.png"
                 alt="Facebook"

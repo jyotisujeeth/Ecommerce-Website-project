@@ -4,6 +4,7 @@ const Header = () => {
       <div className="mt-5">
         <div style={{ color: "black", textAlign: "center" }}>
           <h1>The Generics</h1>
+          <h2>Ecommerce Website</h2>
         </div>
       </div>
     </div>

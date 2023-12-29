@@ -11,7 +11,7 @@ ul {
     justify-content: center;
     align-items: center;
     padding: 5px;
-    background-color: #000000;
+    background-color: #b3a212;
     color: aliceblue;
     /* Fix the footer to the bottom */
     position: fixed;
@@ -39,7 +39,7 @@ ul {
   
   /* Apply hover effect on the icons */
   footer ul li img:hover {
-    background-color: #333; /* Darken the background on hover */
+    background-color: #ec5d5d; /* Darken the background on hover */
   }
   h4{
     margin-right:10px;
