@@ -1,40 +1,19 @@
-import React from "react";
-import "./Footer.module.css";
+import { Fragment } from "react";
+import { BsYoutube, BsSpotify, BsFacebook, BsInstagram } from "react-icons/bs";
+
 const Footer = () => {
   return (
-    <footer>
-      <h4>The Generics</h4>
-      <div>
-        <ul>
-          <li>
-            <a href="https://www.youtube.com/">
-              <img
-                src="https://prasadyash2411.github.io/ecom-website/img/6260efc8fc9a9002669d2f4ad9956cc0.jpg"
-                alt="YouTube"
-              />
-            </a>
-            
-          </li>
-          <li>
-            <a href="https://open.spotify.com//">
-              <img
-                src="https://prasadyash2411.github.io/ecom-website/img/Spotify%20Logo.png"
-                alt="Spotify"
-              />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/">
-              <img
-                src="https://prasadyash2411.github.io/ecom-website/img/Facebook%20Logo.png"
-                alt="Facebook"
-              />
-            </a>
-          </li>
-        </ul>
+    <Fragment>
+      <div className="p-1 bg-info text-white d-flex align-items-center ">
+        <p style={{ fontSize: "3em", fontFamily: "bold", marginLeft: "25%" }}>
+          The Generics
+        </p>
+        <BsYoutube style={{ marginLeft: "40%" }} size={36} />
+        <BsSpotify style={{ marginLeft: "2%" }} size={36} />
+        <BsFacebook style={{ marginLeft: "2%" }} size={36} />
+        <BsInstagram style={{ marginLeft: "2%" }} size={36} />
       </div>
-    </footer>
+    </Fragment>
   );
 };
-
 export default Footer;
