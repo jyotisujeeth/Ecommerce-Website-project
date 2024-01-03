@@ -111,7 +111,7 @@ const CartProvider = (props) => {
   };
 
   useEffect(() => {
-    const fetch = async () => {
+    const eddit = async () => {
       const response = await fetch(
         `https://ecommerse1-c3862-default-rtdb.firebaseio.com/ProductData/${authCtx.email}.json`
       );
@@ -129,7 +129,7 @@ const CartProvider = (props) => {
       });
       console.log("fetching data");
     };
-    fetch();
+    eddit();
   }, [authCtx.email]);
 
   const cartContext = {
