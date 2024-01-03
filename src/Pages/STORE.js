@@ -19,7 +19,7 @@ const STORE = () => {
     });  
     console.log(item);
     const response = await fetch(
-      `https://ecommerse1-c3862-default-rtdb.firebaseio.com/ProductData/${authCtx.email}.json`,
+      `https://e-comm-2e2d6-default-rtdb.firebaseio.com/ProductData/${authCtx.email}.json`,
       {
         method: "POST",
         body: JSON.stringify(item),
@@ -27,7 +27,7 @@ const STORE = () => {
           "Content-Type": "application/json",
         },
       }
-      );
+    );
     const data = await response.json();
     console.log(data);
   };

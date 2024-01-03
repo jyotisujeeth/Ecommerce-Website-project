@@ -23,7 +23,7 @@ const AuthForm = () => {
     } else {
       // sending SingUp request
       fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCuwdlNK_HArrq59Wc3Qjsd5yNizUCUGHw",
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD95qBQJWCrzbaT8up4-90c-iwmDHCGFdw",
         {
           method: "POST",
           body: JSON.stringify({

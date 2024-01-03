@@ -10,13 +10,16 @@ const defaultCartState = {
 const cartReducer = (state, action) => {
   if (action.type === "replace") {
     state.items = action.replCartItem;
+  
   }
+  
 
   if (action.type === "ADD_ITEM") {
-    const existingCartItemIndex = state.items.findIndex(
+    const existingCartItemIndex = state.items?.findIndex(
       (cartItem) => cartItem.id === action.item.id
     );
 
+  
     const existingCartItem = state.items[existingCartItemIndex];
     let updatedItems;
     if (existingCartItem) {
@@ -113,16 +116,22 @@ const CartProvider = (props) => {
   useEffect(() => {
     const eddit = async () => {
       const response = await fetch(
-        `https://ecommerse1-c3862-default-rtdb.firebaseio.com/ProductData/${authCtx.email}.json`
+        `https://e-comm-2e2d6-default-rtdb.firebaseio.com/ProductData/${authCtx.email}.json`
       );
+      
       // get request
-      const data = await response.json;
-
+      if (!response )
+{
+      return;
+}      
+const data = await response.json();
+console.log(data);
       const replCartItem = [];
 
       for (let key in data) {
         replCartItem.push({ ...data[key], id: key });
       }
+      console.log( "-------------",replCartItem);
       dispatchCartAction({
         type: "replace",
         data: replCartItem,
@@ -139,12 +148,14 @@ const CartProvider = (props) => {
     removeItem: removeItemFromCart,
     updateQuantity: updateQuantity,
   };
-
+  console.log("==============", cartState.items);
   return (
     <CartContext.Provider value={cartContext}>
       {props.children}
     </CartContext.Provider>
   );
 };
+
+
 
 export default CartProvider;
