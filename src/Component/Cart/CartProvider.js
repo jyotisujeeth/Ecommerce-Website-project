@@ -9,8 +9,13 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if (action.type === "replace") {
-    state.items = action.replCartItem;
-  
+     state.items = action.replCartItem;
+return {
+//     items:action?.data,
+totalAmount: action?.data?.reduce((acc, item) => {
+return acc + (item.price || 0);
+ }, 0),
+ };
   }
   
 

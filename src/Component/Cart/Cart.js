@@ -7,11 +7,13 @@ import CartItem from "./CartItem";
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
 
-  const totalAmount = cartCtx.items.reduce(
-    (prevValue, currItem) => prevValue + currItem.price * currItem.amount,
-    0
-  );
+  // const totalAmount = cartCtx.items.reduce(
+  //   (prevValue, currItem) => prevValue + currItem.price * currItem.amount,
+  //   0
+  // );
 
+  const totalAmount = cartCtx.totalAmount;
+  
   const cartItems = (
     <ul style={{ listStyle: "none", padding: 0 }}>
       {cartCtx.items.map((item) => (
