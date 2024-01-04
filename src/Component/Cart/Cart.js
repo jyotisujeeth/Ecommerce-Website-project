@@ -12,7 +12,7 @@ const Cart = (props) => {
     0
   );
 
-  // const totalAmount = cartCtx.totalAmount;
+  //  const totalAmount = cartCtx.totalAmount;
   
   const cartItems = (
     <ul style={{ listStyle: "none", padding: 0 }}>
