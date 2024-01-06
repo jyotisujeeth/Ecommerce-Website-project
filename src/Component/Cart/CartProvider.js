@@ -9,22 +9,21 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if (action.type === "replace") {
-    if(state && state.item) {
-    state.items = action.replCartItem;
-    //return {
-    //  items:action?.data,
-    //  totalAmount: action.data.reduce((acc, item) => {
-    //  return acc + (item.price || 0);
-    //  }, 0),
-    //  };
+    if (state && state.item) {
+      state.items = action.replCartItem;
+      //return {
+      //  items:action?.data,
+      //  totalAmount: action.data.reduce((acc, item) => {
+      //  return acc + (item.price || 0);
+      //  }, 0),
+      //  };
+    }
   }
-}
 
   if (action.type === "ADD_ITEM") {
     const existingCartItemIndex = state.items?.findIndex(
       (cartItem) => cartItem.id === action.item.id
     );
-
 
     const existingCartItem = state.items[existingCartItemIndex];
     let updatedItems;

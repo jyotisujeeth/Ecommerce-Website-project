@@ -10,8 +10,6 @@ const CartContext = React.createContext({
 
 export default CartContext; 
 
-
-
 // import React, { useContext } from "react";
 // import CartContext from "./CartContext";
 
