@@ -27,12 +27,14 @@ export const AuthContextProvider = (props) => {
   const loginHandler = (token, email) => {
     settoken(token);
     setEmail(email);
+    
     localStorage.setItem("token", token);
     localStorage.setItem("email", email);
   };
 
   const logoutHandler = () => {
     settoken(null);
+    setEmail(null);
     localStorage.removeItem("token");
     localStorage.removeItem("email");
   };

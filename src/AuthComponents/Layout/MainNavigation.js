@@ -6,6 +6,7 @@ import AuthContext from "../../Component/Store/AuthContext";
 const MainNavigation = () => {
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
+  console.log("userinfo",isLoggedIn);
   return (
     <header className={classes.header}>
       <Link to="/">

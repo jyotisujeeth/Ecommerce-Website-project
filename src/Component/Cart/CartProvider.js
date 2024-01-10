@@ -9,19 +9,18 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if (action.type === "replace") {
-    if (state && state.item) {
-      state.items = action.replCartItem;
-      //return {
-      //  items:action?.data,
-      //  totalAmount: action.data.reduce((acc, item) => {
-      //  return acc + (item.price || 0);
-      //  }, 0),
-      //  };
-    }
+    state.items = action.replCartItem;
+    return{
+      items: action?.data,
+    totalAmount:  action.data.reduce((acc, item) => {
+      return acc + (item.price || 0);
+     }, 0),
+
   }
+}
 
   if (action.type === "ADD_ITEM") {
-    const existingCartItemIndex = state.items?.findIndex(
+    const existingCartItemIndex = state.items.findIndex(
       (cartItem) => cartItem.id === action.item.id
     );
 
@@ -29,7 +28,7 @@ const cartReducer = (state, action) => {
     let updatedItems;
     if (existingCartItem) {
       const updatedItem = {
-        existingCartItem,
+        ...existingCartItem,
         quantity: existingCartItem.quantity + 1,
         amount: existingCartItem.amount + action.item.amount,
       };
@@ -119,31 +118,30 @@ const CartProvider = (props) => {
   };
 
   useEffect(() => {
-    const eddit = async () => {
-      const response = await fetch(
-        `https://e-comm-2e2d6-default-rtdb.firebaseio.com/ProductData/${authCtx.email}.json`
-      );
+    const fetch = async () => {
+       const response = await fetch(
+         `https://e-comm-2e2d6-default-rtdb.firebaseio.com/ProductData/${authCtx.email}.json`
+       );
+      
+      //  get request
+      const data = await response.json;
 
-      // get request
-      if (!response) {
-        return;
-      }
-      const data = await response.json();
-      console.log(data);
       const replCartItem = [];
 
       for (let key in data) {
         replCartItem.push({ ...data[key], id: key });
       }
-      console.log("-------------", replCartItem);
       dispatchCartAction({
         type: "replace",
         data: replCartItem,
       });
       console.log("fetching data");
     };
-    eddit();
+    fetch();
   }, [authCtx.email]);
+
+
+console.log("=============Authctx===",authCtx);
 
   const cartContext = {
     items: cartState.items,
@@ -152,7 +150,7 @@ const CartProvider = (props) => {
     removeItem: removeItemFromCart,
     updateQuantity: updateQuantity,
   };
-  console.log("==============", cartState.items);
+
   return (
     <CartContext.Provider value={cartContext}>
       {props.children}

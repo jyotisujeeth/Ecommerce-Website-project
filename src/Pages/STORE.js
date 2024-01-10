@@ -1,4 +1,4 @@
-import {Fragment, useContext} from "react";
+import { Fragment, useContext } from "react";
 import CartContext from "../Component/Cart/CartContext";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -9,17 +9,17 @@ import AuthContext from "../Component/Store/AuthContext";
 const STORE = () => {
   const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
-  const addToCartHandler = async(item) => {
+  const addToCartHandler = async (item) => {
     cartCtx.addItem({
       id: item.id,
       imageUrl: item.imageUrl,
       title: item.title,
       price: item.price,
       amount: 1,
-    });  
+    });
     console.log(item);
     const response = await fetch(
-      `https://e-comm-2e2d6-default-rtdb.firebaseio.com/ProductData/${authCtx.email}.json`,
+      `https://ecommerse1-c3862-default-rtdb.firebaseio.com/ProductData/${authCtx.email}.json`,
       {
         method: "POST",
         body: JSON.stringify(item),
@@ -32,46 +32,59 @@ const STORE = () => {
     console.log(data);
   };
 
-return (
+  return (
     <Fragment>
-       <p
+      <p
         className="display-5 text-center p-3 bg-secondary mt-1 text-white"
         style={{ fontSize: "8em", fontFamily: "bold" }}
       >
-        The Generics 
-        
+        The Generics
       </p>
       <h2 style={{ textAlign: "center" }}>Music</h2>
       <div style={{ display: "flex", justifyContent: "center" }}>
+        <div>
+          {productsArr.map((item, index) => {
+            if (index % 2 === 0) {
+              return (
+                <Card
+                  style={{
+                    width: "18rem",
+                    margin: "20px",
+                    marginRight: "70px",
+                    border: "none",
+                  }}
+                  key={index}
+                >
+                  <Card.Body>
+                    <Card.Title
+                      style={{ marginBottom: "15px", textAlign: "center" }}
+                    >
+                      {item.title}
+                    </Card.Title>
 
-      <div>
-       {productsArr.map((item, index) => {
-        if (index % 2 === 0) {
-        return (
-        <Card
-         style={{ width: "18rem", margin: "20px", marginRight: "70px", border: "none",}}
-             key={index}>
-            <Card.Body>
-            <Card.Title
-                style={{ marginBottom: "15px", textAlign: "center" }} >
-                {item.title}
-            </Card.Title>
-            
-            <Link to={`/product/${item.id}`}>
-            <Card.Img variant="center"  src={item.imageUrl}
-              style={{transition: "transform .3s", width: "100%", height: "100%",}}
-                onMouseOver={(e) => {
-                e.currentTarget.style.transform = "scale(1.1)";
-                }}
-                onMouseOut={(e) => {
-                e.currentTarget.style.transform = "scale(1)";
-                }}/>
-                </Link>
+                    <Link to={`/product/${item.id}`}>
+                      <Card.Img
+                        variant="center"
+                        src={item.imageUrl}
+                        style={{
+                          transition: "transform .3s",
+                          width: "100%",
+                          height: "100%",
+                        }}
+                        onMouseOver={(e) => {
+                          e.currentTarget.style.transform = "scale(1.1)";
+                        }}
+                        onMouseOut={(e) => {
+                          e.currentTarget.style.transform = "scale(1)";
+                        }}
+                      />
+                    </Link>
 
-             <Card.Text style={{ float: "left", marginTop: "15px" }}>
+                    <Card.Text style={{ float: "left", marginTop: "15px" }}>
                       ${item.price}
                     </Card.Text>
-                    <Button variant="primary"
+                    <Button
+                      variant="primary"
                       style={{ float: "right", marginTop: "15px" }}
                       onClick={() => addToCartHandler(item)}
                     >
@@ -92,9 +105,14 @@ return (
             if (index % 2 !== 0) {
               return (
                 <Card
-                  style={{width: "18rem",margin: "20px",marginLeft: "70px",
-                    border: "none",}}
-                  key={index}>
+                  style={{
+                    width: "18rem",
+                    margin: "20px",
+                    marginLeft: "70px",
+                    border: "none",
+                  }}
+                  key={index}
+                >
                   <Card.Body>
                     <Card.Title
                       style={{ marginBottom: "15px", textAlign: "center" }}
@@ -103,16 +121,21 @@ return (
                     </Card.Title>
 
                     <Link to={`/product/${item.id}`}>
-                    <Card.Img variant="center" src={item.imageUrl}
-                      style={{transition: "transform .3s", width: "100%",height: "100%",}}
-                      
-                      onMouseOver={(e) => {
-                        e.currentTarget.style.transform = "scale(1.1)";
-                      }}
-                      onMouseOut={(e) => {
-                        e.currentTarget.style.transform = "scale(1)";
-                      }}
-                    />
+                      <Card.Img
+                        variant="center"
+                        src={item.imageUrl}
+                        style={{
+                          transition: "transform .3s",
+                          width: "100%",
+                          height: "100%",
+                        }}
+                        onMouseOver={(e) => {
+                          e.currentTarget.style.transform = "scale(1.1)";
+                        }}
+                        onMouseOut={(e) => {
+                          e.currentTarget.style.transform = "scale(1)";
+                        }}
+                      />
                     </Link>
 
                     <Card.Text style={{ float: "left", marginTop: "15px" }}>
